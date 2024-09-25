@@ -1,0 +1,26 @@
+name: Hourly Task in China Time (08:00-22:00 CST)
+
+on:
+  schedule:
+    # 每天从 00:00 到 14:00 UTC，即中国时间 08:00 到 22:00 每小时执行一次
+    - cron: '0 0-14 * * *'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Fetch Notion Page and Send to WeChat Work Hourly
+    steps:
+      # 第一步：从仓库中检出代码
+      - uses: actions/checkout@v3
+
+      # 第二步：安装 Node.js 和 npm
+      - name: Install Node.js and npm
+        run: |
+          sudo apt-get install -y nodejs npm
+          npm install node-fetch@2
+
+      # 第三步：获取 Notion 页面内容并发送到企业微信机器人
+      - name: Fetch Notion Page and Send to WeChat Work
+        run: |
+          node ./water.js
