@@ -6,7 +6,7 @@ const notionToken = 'secret_nQaS11XErjplQlmTWzy1g1Gq5ZvY0IUh4pQLaxfwpWY';  // No
   const message = {
     msgtype: 'text',
     text: {
-      content: `该喝水了`,
+      content: `该喝水了-来自GitHub`,
     },
   };
 
