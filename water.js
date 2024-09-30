@@ -25,3 +25,30 @@ const notionToken = 'secret_nQaS11XErjplQlmTWzy1g1Gq5ZvY0IUh4pQLaxfwpWY';  // No
 .catch(error => {
   console.error('请求失败', error);
 });
+
+
+
+  // 企业微信 Webhook 发送消息
+  const webhookUrl1 = 'http://111.230.107.130:8005/tansci/auth/webhook?key=ef5e1d54-2462-4741-bb33-43aa9690cc83';
+  const message1 = {
+    msgtype: 'text',
+    text: {
+      content: `该喝水了-来自小陈-github`,
+    },
+  };
+
+  fetch(webhookUrl1, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(message1),
+  }).then(response => response.json())
+.then(data => {
+  if (data.errcode === 0) {
+    console.log('消息发送成功');
+  } else {
+    console.log('消息发送失败', data);
+  }
+})
+.catch(error => {
+  console.error('请求失败', error);
+});
